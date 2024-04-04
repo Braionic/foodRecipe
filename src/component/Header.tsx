@@ -6,6 +6,7 @@ import React, {
 } from "react";
 import { Link, NavLink, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { recipeContext } from "./Context";
+
 const { log } = console;
 
 export default function Header() {

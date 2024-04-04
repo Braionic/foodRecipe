@@ -49,11 +49,11 @@ export default function RecipeDetailsCard({
     );
   }
   return (
-    <div className="grid grid-cols-2 gap-3 my-5">
-      <div className="rounded overflow-hidden mx-3">
-        <img src={data?.image_url} className="w-100" />
+    <div className="grid  grid-cols-2 my-5 p-10">
+      <div className="rounded overflow-hidden mx-5 min-w-8">
+        <img src={data?.image_url} className="w-full h-32 md:h-96 object-cover hover:object-fill" />
       </div>
-      <div>
+      <div className="details-container">
         <p className="text-xs">{data?.publisher}</p>
         <p className="font-bold">{data?.title}</p>
 

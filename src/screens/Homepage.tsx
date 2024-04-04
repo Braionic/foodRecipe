@@ -7,7 +7,7 @@ export default function Homepage() {
   const recipeList = data?.map((data, index) => {
     return (
       <Card
-      key={index}
+        key={index}
         title={data.title}
         id={data.id}
         publisher={data.publisher}
@@ -16,16 +16,27 @@ export default function Homepage() {
     );
   });
 
-  if(isLoading){
-    return <div><h2>Loading</h2></div>
+  if (isLoading) {
+    return (
+      <div>
+        <h2>Loading</h2>
+      </div>
+    );
   }
   return (
-    <div className="" style={{height: "100vh"}}>
-      <div className="sm:flex sm:flex-wrap justify-center gap-4 m-10">
-        {data?recipeList:(
-          <h1 className="uppercase font-bold">Nothing to show, please search SOMETHING</h1>
-        )}
-      </div>
+    <div className="flex-1">
+      {data ? (
+        <div className="sm:flex sm:flex-wrap justify-start gap-5 m-10">
+          {recipeList}
+        </div>
+      ) : (
+        <div className="flex items-center justify-center flex-col">
+          <h1 className="uppercase font-bold">
+            Nothing to show, please search SOMETHING
+          </h1>
+          <p>Type a recipe in the address bar e.g "pizza"</p>
+        </div>
+      )}
     </div>
   );
 }

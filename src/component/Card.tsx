@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-
+import { MdOutlineFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
+import { useContext } from "react";
+import { recipeContext } from "./Context";
 export default function Card({
   title,
   id,
@@ -10,14 +12,16 @@ export default function Card({
   id: string;
   img: string;
   publisher: string;
-}) {
+}) 
+{
+  const {handleFavourite, favouriteCopy} = useContext(recipeContext)
   return (
-    <div className="rounded-md min-w-64  overflow-hidden shadow sm:mw-42">
+    <div className="rounded-md min-w-64  overflow-hidden shadow-md sm:mw-42 relative">
       <div className="h-42 min-w-8">
         <img
           src={img}
           alt="recipe thumbnail"
-          className="w-full sm:h-32 object-cover"
+          className="w-full sm:h-32 object-cover hover:object-fill"
         />
       </div>
 
@@ -43,6 +47,8 @@ export default function Card({
             Recipe Details
           </button>
         </Link>
+        <div className="absolute top-2 right-3 cursor-pointer" onClick={()=> handleFavourite?.(id)}>{favouriteCopy?.indexOf(id) === -1 ?<MdOutlineFavoriteBorder size={20} />: <MdOutlineFavorite />}</div>
+        
       </div>
     </div>
   );
